@@ -2,4 +2,9 @@
     <string name="app_name">Foodie_Android</string>
     <string name="foodie">Foodie</string>
     <string name="tagline">Recipes for everyday</string>
+    <string name="logo_of_the_application">Logo of the application</string>
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

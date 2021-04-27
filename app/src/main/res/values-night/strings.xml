@@ -2,4 +2,5 @@
 <resources>
     <string name="foodie">Foodie</string>
     <string name="tagline">Recipes for everyday</string>
+    <string name="logo_of_the_application">Logo of the application</string>
 </resources>
