@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Foodie_Android</string>
+    <string name="foodie">Foodie</string>
+    <string name="tagline">Recipes for everyday</string>
+</resources>
