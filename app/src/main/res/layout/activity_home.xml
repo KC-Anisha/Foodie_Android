@@ -14,10 +14,10 @@
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="50dp"
         android:background="@drawable/rounded"
         android:elevation="16dp"
-        android:padding="8dp"
+        android:padding="2dp"
         app:cnb_menuResource="@menu/menu_bottom"
         app:layout_constraintBottom_toBottomOf="parent" />
 

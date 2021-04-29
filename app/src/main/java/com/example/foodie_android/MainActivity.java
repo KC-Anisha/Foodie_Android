@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     SignInButton googlebtn;
     GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
+    TextView signUp;
 
 
     @Override
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getWindow().setStatusBarColor(getResources().getColor(R.color.yellow));
 
+        // Google Login
         googlebtn = findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
         processRequest();
@@ -74,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 processLogin();
+            }
+        });
+
+        // Not a user? Sign up
+        signUp = findViewById(R.id.login_signup);
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+                finish();
             }
         });
     }

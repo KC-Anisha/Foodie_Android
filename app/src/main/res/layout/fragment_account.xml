@@ -4,43 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/acc_bg"
     tools:context=".AccountFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="276dp"
-        android:text="Account"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_logout"
         android:layout_width="173dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="155dp"
         android:fontFamily="@font/cormorant_bold"
+        android:text="Log out"
         android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_below="@+id/textView"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="158dp"
-        android:layout_marginEnd="155dp"
-        android:text="Log out"
         app:backgroundTint="@color/red"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/account_img" />
+
+    <ImageView
+        android:id="@+id/account_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/account_greeting"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/account_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/cormorant_bold"
+        android:text="Hi Human!"
+        android:textColor="@color/blue"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
