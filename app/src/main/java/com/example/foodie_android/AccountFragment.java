@@ -100,8 +100,8 @@ public class AccountFragment extends Fragment {
         profileImage = view.findViewById(R.id.account_img);
         Glide.with(this)
                 .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
-                .placeholder(R.drawable.profile_placeholder)
-                .error(R.drawable.profile_placeholder)
+                .placeholder(R.drawable.profile_placeholder).circleCrop()
+                .error(R.drawable.profile_placeholder).circleCrop()
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .circleCrop()
