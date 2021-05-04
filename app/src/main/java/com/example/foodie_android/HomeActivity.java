@@ -3,6 +3,7 @@ package com.example.foodie_android;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +11,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.volley.RequestQueue;
+import com.example.foodie_android.adapters.CategoryAdapter;
+import com.example.foodie_android.models.CategoryItem;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     ChipNavigationBar bottomNav;
@@ -24,9 +30,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-//        System.out.println("User name is " + account.getDisplayName());
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         currentUser.getUid();

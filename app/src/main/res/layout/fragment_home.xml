@@ -65,12 +65,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/explore_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/surprise_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.06" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/surprise_btn"
@@ -78,16 +81,17 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="28dp"
+        android:layout_marginBottom="60dp"
         android:fontFamily="@font/cormorant_bold"
+        android:text="Surprise Me!"
         android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
         app:backgroundTint="@color/red"
-        android:text="Surprise Me!"
         app:cornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explore_rv" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
