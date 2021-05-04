@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,15 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
     private Context mContext;
     private ArrayList<CategoryItem> mCategoryItemList;
+    private OnCategoryClickListener mListener;
+
+    public interface OnCategoryClickListener {
+        void onCategoryClick(int position);
+    }
+
+    public void setOnCategoryListener(OnCategoryClickListener listener) {
+        mListener = listener;
+    }
 
     public CategoryAdapter(Context context, ArrayList<CategoryItem> categoryItemList) {
         mContext = context;
@@ -48,14 +58,30 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return mCategoryItemList.size();
     }
 
-    public class CategoryViewHolder extends RecyclerView.ViewHolder {
+    public class CategoryViewHolder extends RecyclerView.ViewHolder{
         public TextView categoryName;
         public ImageView cardBg;
+
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             categoryName = itemView.findViewById(R.id.category_name);
             cardBg = itemView.findViewById(R.id.category_card_bg);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onCategoryClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
+
+
+
 }
