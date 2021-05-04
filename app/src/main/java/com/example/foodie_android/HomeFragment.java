@@ -102,9 +102,9 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
     @Override
     public void onCategoryClick(int position) {
         CategoryItem categoryItem = mCategoryItemList.get(position);
-        Fragment fragmet = CategoryFragment.newInstance(categoryItem.getName());
+        Fragment fragment = CategoryFragment.newInstance(categoryItem.getName());
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragmet);
+        transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
