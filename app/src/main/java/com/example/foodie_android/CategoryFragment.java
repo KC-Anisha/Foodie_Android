@@ -115,11 +115,10 @@ public class CategoryFragment extends Fragment implements CategoryMealAdapter.On
     @Override
     public void onCategoryMealClick(int position) {
         CategoryMealItem categoryMealItem = mCategoryItemList.get(position);
-        Toast.makeText(getActivity(), categoryMealItem.getID(), Toast.LENGTH_SHORT).show();
-//        Fragment fragment = CategoryFragment.newInstance(categoryItem.getName());
-//        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.fragment_container, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
+        Fragment fragment = MealDetailFragment.newInstance(categoryMealItem.getID());
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
