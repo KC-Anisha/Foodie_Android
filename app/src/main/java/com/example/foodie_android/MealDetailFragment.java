@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -24,6 +26,11 @@ import com.android.volley.toolbox.Volley;
 import com.example.foodie_android.adapters.CategoryMealAdapter;
 import com.example.foodie_android.models.CategoryMealItem;
 import com.example.foodie_android.models.Meal;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +49,8 @@ public class MealDetailFragment extends Fragment {
     private String id;
     private RequestQueue mRequestQueue;
     Meal meal;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    String userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     TextView title;
     TextView category;
@@ -51,6 +60,7 @@ public class MealDetailFragment extends Fragment {
     TextView ing;
     TextView instructions;
     TextView source;
+    Button saveMealBtn;
 
     public MealDetailFragment() {
         // Required empty public constructor
@@ -91,28 +101,16 @@ public class MealDetailFragment extends Fragment {
         mRequestQueue = Volley.newRequestQueue(getActivity());
         parseJSON();
 
-
-//        // Set views
-//        title.setText(meal.getName());
-//        category.setText(meal.getCategory());
-//        area.setText("From: " + meal.getArea());
-//        tags.setText("Tags: " + meal.getTags());
-//        instructions.setText(meal.getInstructions());
-//        if (meal.getSource() != null || !meal.getSource().isEmpty()) {
-//            source.setText(meal.getSource());
-//        }
-//        String ingredients= "";
-//        for (Map.Entry<String,String> item : meal.getIngredients().entrySet()) {
-//            if (item.getKey() != null && !item.getKey().isEmpty()) {
-//                ingredients.concat(item.getKey() + " (" + item.getValue() + ") \n");
-//            }
-//        }
-//        ing.setText(ingredients);
-//        String videoID = meal.getVideoURL().substring(meal.getImageURL().lastIndexOf("=") + 1);
-//        video.getSettings().setJavaScriptEnabled(true);
-//        video.getSettings().setPluginState(WebSettings.PluginState.ON);
-//        video.loadUrl("http://www.youtube.com/embed/" + videoID + "?autoplay=1&vq=small");
-//        video.setWebChromeClient(new WebChromeClient());
+        // Save meal
+        saveMealBtn = view.findViewById(R.id.save_meal_btn);
+        saveMealBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("MEALID", "MEAL TO BE SAVED: " + meal.getID());
+                DocumentReference userDBInfo = db.collection("users").document(userUID);
+                userDBInfo.update("savedMeals", FieldValue.arrayUnion(meal.getID()));
+            }
+        });
 
         // Inflate the layout for this fragment
         return view;
@@ -172,7 +170,6 @@ public class MealDetailFragment extends Fragment {
             source.setMovementMethod(LinkMovementMethod.getInstance());
             String text = "<a href='" + meal.getSource() + "'> Source </a>";
             source.setText(Html.fromHtml(text));
-//            source.setText(meal.getSource());
         }
         String ingredients= "";
         for (Map.Entry<String,String> item : meal.getIngredients().entrySet()) {
@@ -192,11 +189,6 @@ public class MealDetailFragment extends Fragment {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
-
         video.loadUrl("https://www.youtube.com/embed/" + videoID);
-//        video.getSettings().setJavaScriptEnabled(true);
-//        video.getSettings().setPluginState(WebSettings.PluginState.ON);
-//        video.loadUrl("http://www.youtube.com/embed/" + videoID + "?autoplay=1&vq=small");
-//        video.setWebChromeClient(new WebChromeClient());
     }
 }
