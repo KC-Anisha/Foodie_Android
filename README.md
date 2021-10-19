@@ -22,7 +22,9 @@ The following features are yet to be implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Demo of Application](foodieDemo.mp4)
+![Demo of Application](demo.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 The app uses Firebase and was built using Android Studio.
